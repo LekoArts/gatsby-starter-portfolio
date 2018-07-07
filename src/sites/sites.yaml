@@ -1,0 +1,42 @@
+- title: 'Emma'
+  repo: 'https://github.com/LeKoArts/gatsby-starter-portfolio-emma'
+  preview: 'https://portfolio-emma.netlify.com/'
+  description: 'Full-width grid with large images and a light theme'
+  cover: './emma.jpg'
+  features:
+    - CSS Grid
+    - Vibrant.js
+- title: 'Cara'
+  repo: 'https://github.com/LeKoArts/gatsby-starter-portfolio-cara'
+  preview: 'https://portfolio-cara.netlify.com/'
+  description: 'Playful & Colorful One-Page website with Parallax effect'
+  cover: './cara.jpg'
+  features:
+    - TailwindCSS
+    - React Spring
+    - Emotion
+- title: 'Bella'
+  repo: 'https://github.com/LeKoArts/gatsby-starter-portfolio-bella'
+  preview: 'https://portfolio-bella.netlify.com/'
+  description: 'A bright single-page portfolio powered by Prismic.io'
+  cover: './bella.jpg'
+  features:
+    - Prismic.io
+    - Emotion
+- title: 'Emilia'
+  repo: 'https://github.com/LeKoArts/gatsby-starter-portfolio-emilia'
+  preview: 'https://portfolio-emilia.netlify.com/'
+  description: 'A dark themed One-Page layout with an image grid'
+  cover: './emilia.jpg'
+  features:
+    - React Overdrive
+    - CSS Grid
+    - Styled Components
+- title: 'Minimal Blog'
+  repo: 'https://github.com/LeKoArts/gatsby-starter-minimal-blog'
+  preview: 'https://minimal-blog.netlify.com/'
+  description: 'Minimal blog focused on the content'
+  cover: './minimal.jpg'
+  features:
+    - Styled Components
+    - Markdown
