@@ -302,7 +302,7 @@ class Index extends Component {
           </SliderWrapper>
           <Footer>
             Design by LekoArts.{' '}
-            <a href="https://www.lekoarts.de" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/LeKoArts/gatsby-starter-portfolio" target="_blank" rel="noopener noreferrer">
               Source
             </a>.
           </Footer>
