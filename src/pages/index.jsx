@@ -116,8 +116,7 @@ const SliderWrapper = styled.section`
 `;
 
 const Footer = styled.footer`
-  ${tw('absolute pin-b pin-x text-center pb-4 text-xs text-grey-light tracking-wide z-50')};
-  text-transform: uppercase;
+  ${tw('absolute pin-b pin-x text-center pb-4 text-xs text-grey-light tracking-wide z-50 uppercase')};
   a {
     ${tw('text-orange hover:text-orange-light no-underline')};
   }
@@ -141,8 +140,7 @@ const Bottom = styled.div`
 `;
 
 const Preview = styled.a`
-  ${tw('text-white inline-block text-lg relative mb-4 py-1 tracking-wide no-underline')};
-  text-transform: uppercase;
+  ${tw('text-white inline-block text-lg relative mb-4 py-1 tracking-wide no-underline uppercase')};
   img {
     width: 18px;
     height: 18px;
