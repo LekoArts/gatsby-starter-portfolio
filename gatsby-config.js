@@ -17,6 +17,13 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        trackingId: 'UA-47519312-2',
+        anonymize: true,
+      },
+    },
+    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: 'Gatsby Starter Portfolio Overview by LekoArts',

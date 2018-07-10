@@ -8,6 +8,7 @@ import styled, { injectGlobal } from 'react-emotion';
 import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
+import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import 'typeface-montserrat';
 import favicon from '../favicon.png';
 import rightArrow from '../right-arrow.svg';
@@ -92,7 +93,7 @@ const Social = styled.section`
   ${tw('flex flex-wrap items-center justify-center sm:justify-start mt-8')};
 `;
 
-const Button = styled.a`
+const Button = styled(OutboundLink)`
   ${tw(
     'cursor-pointer text-sm md:text-base mx-2 sm:mx-0 py-2 px-4 md:px-8 rounded-full no-underline shadow-md focus:outline-none focus:shadow-outline'
   )};
@@ -139,7 +140,7 @@ const Bottom = styled.div`
   ${tw('z-30')};
 `;
 
-const Preview = styled.a`
+const Preview = styled(OutboundLink)`
   ${tw('text-white inline-block text-lg relative mb-4 py-1 tracking-wide no-underline uppercase')};
   img {
     width: 18px;
@@ -259,13 +260,13 @@ class Index extends Component {
               <span>&</span> easy with my minimalistic and fast starters<span>.</span>
             </Description>
             <Social>
-              <Homepage role="button" href="https://www.lekoarts.de" target="_blank" rel="noopener noreferrer">
+              <Homepage role="button" href="https://www.lekoarts.de">
                 Homepage
               </Homepage>
-              <GitHub role="button" href="https://github.com/LeKoArts" target="_blank" rel="noopener noreferrer">
+              <GitHub role="button" href="https://github.com/LeKoArts">
                 GitHub
               </GitHub>
-              <Twitter role="button" href="https://twitter.com/lekoarts_de" target="_blank" rel="noopener noreferrer">
+              <Twitter role="button" href="https://twitter.com/lekoarts_de">
                 Twitter
               </Twitter>
             </Social>
@@ -278,7 +279,7 @@ class Index extends Component {
                   <Item key={id}>
                     <ItemContent>
                       <Top>
-                        <Preview href={preview} target="_blank" rel="noopener noreferrer">
+                        <Preview href={preview}>
                           Preview <img src={rightArrow} alt="Arrow" aria-hidden="true" />
                         </Preview>
                         <Desc>{description}</Desc>
@@ -299,10 +300,8 @@ class Index extends Component {
             </Swiper>
           </SliderWrapper>
           <Footer>
-            Design by LekoArts.{' '}
-            <a href="https://github.com/LeKoArts/gatsby-starter-portfolio" target="_blank" rel="noopener noreferrer">
-              Source
-            </a>.
+            Design by <OutboundLink href="https://www.lekoarts.de">LekoArts</OutboundLink>.{' '}
+            <OutboundLink href="https://github.com/LeKoArts/gatsby-starter-portfolio">Source</OutboundLink>.
           </Footer>
         </Page>
       </React.Fragment>
