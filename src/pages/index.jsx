@@ -1,6 +1,7 @@
 /* global tw */
 /* eslint no-unused-expressions: 0 */
 /* eslint react/prefer-stateless-function: 0 */
+/* eslint no-return-assign: 0 */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Swiper from 'react-id-swiper';
@@ -21,7 +22,7 @@ injectGlobal`
   }
   ::selection {
     color: white;
-    background-color: #6574cd;
+    background-color: #f6993f;
   }
   html {
     background: #6574cd;
@@ -35,7 +36,7 @@ injectGlobal`
     padding: 0;
   }
   .swiper-container {
-    padding-bottom: 6rem;
+    padding-bottom: 4rem;
     padding-top: 4rem;
   }
   .swiper-button-prev, .swiper-button-next {
@@ -46,6 +47,7 @@ injectGlobal`
     transform: scale(1.4);
     width: 44px;
     transition: transform 0.2s ease-in-out;
+    background-size: 35px 35px;
   }
   .swiper-button-prev.swiper-button-disabled,
   .swiper-button-next.swiper-button-disabled {
@@ -56,6 +58,32 @@ injectGlobal`
   }
   .swiper-button-next {
     left: 60px;
+  }
+  select {
+    appearance: none;
+    border:none;
+    font-size: 1rem;
+    width: 100%;
+    color: white;
+    padding: .75rem 1rem;
+    border-radius: .25rem;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='white'%3E%3Cpolygon points='0,0 100,0 50,50'/%3E%3C/svg%3E") #7886d7 no-repeat 98% 77%;
+    background-size: 25px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,.12), 0 2px 4px 0 rgba(0,0,0,.08);
+    &:focus {
+      outline: 0px;
+      box-shadow: 0 0 0 3px rgba(101,116,205,.5);
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  select::-ms-expand {
+    display:none;
+  }
+  select option {
+    background: #6574cd;
+    font-size: 1rem;
   }
 `;
 
@@ -71,8 +99,12 @@ const Page = styled.div`
   }
 `;
 
-const Content = styled.main`
-  ${tw('sm:px-8 py-8 md:py-16 px-4 md:px-24')};
+const Content = styled.section`
+  ${tw('sm:px-8 px-4 md:px-24')};
+`;
+
+const Intro = styled(Content)`
+  ${tw('py-8 md:py-16')};
 `;
 
 const Title = styled.h1`
@@ -82,11 +114,27 @@ const Title = styled.h1`
   }
 `;
 
-const Description = styled.p`
+const Description = styled.div`
   ${tw('text-sm sm:text-base md:text-lg max-w-lg text-grey-lighter')};
   span {
     ${tw('text-orange')};
   }
+  a {
+    ${tw('no-underline text-orange hover:text-orange-light')};
+  }
+  pre {
+    ${tw('bg-indigo-darker rounded px-4 py-2 shadow-md mb-8')};
+  }
+  code {
+    ${tw('break-normal whitespace-pre-line text-grey')};
+    word-spacing: normal;
+    word-break: normal;
+    tab-size: 4;
+    span {
+      ${tw('text-yellow')};
+    }
+  }
+  ${props => props.long && 'max-width: 60rem'};
 `;
 
 const Social = styled.section`
@@ -98,18 +146,21 @@ const Button = styled(OutboundLink)`
     'cursor-pointer text-sm md:text-base mx-2 sm:mx-0 py-2 px-4 md:px-8 rounded-full no-underline shadow-md focus:outline-none focus:shadow-outline'
   )};
   transition: all 0.3s ease-in-out;
+  &:hover {
+    transform: translateY(-1px);
+  }
 `;
 
 const Homepage = styled(Button)`
-  ${tw('bg-indigo hover:bg-indigo-light text-white')};
+  ${tw('bg-indigo text-white')};
 `;
 
 const GitHub = styled(Button)`
-  ${tw('bg-black hover:bg-grey-darkest text-white sm:mx-4 my-4 sm:my-0')};
+  ${tw('bg-grey-dark text-white sm:mx-4 my-4 sm:my-0')};
 `;
 
 const Twitter = styled(Button)`
-  ${tw('bg-blue hover:bg-blue-light text-white')};
+  ${tw('bg-blue text-white')};
 `;
 
 const SliderWrapper = styled.section`
@@ -117,7 +168,7 @@ const SliderWrapper = styled.section`
 `;
 
 const Footer = styled.footer`
-  ${tw('absolute pin-b pin-x text-center pb-4 text-xs text-grey-light tracking-wide z-50 uppercase')};
+  ${tw('text-center pb-6 pt-12 text-xs text-grey-light tracking-wide z-50 uppercase')};
   a {
     ${tw('text-orange hover:text-orange-light no-underline')};
   }
@@ -194,7 +245,27 @@ const FeaturesWrapper = styled.div`
   min-height: 50px;
 `;
 
+const Heading = styled.h2`
+  ${tw('text-2xl md:text-4xl font-normal')};
+`;
+
+const SelectWrapper = styled.div`
+  ${tw('mb-12')};
+`;
+
 class Index extends Component {
+  state = {
+    name: '[DIRECTORY_NAME]',
+    url: '[GITHUB_REPO_URL]',
+  };
+
+  selectChange = event => {
+    this.setState({
+      name: event.target.selectedOptions[0].dataset.name,
+      url: event.target.selectedOptions[0].dataset.url,
+    });
+  };
+
   render() {
     const {
       data: {
@@ -249,15 +320,17 @@ class Index extends Component {
           <meta name="twitter:image" content={favicon} />
         </Helmet>
         <Page>
-          <Content>
+          <Intro>
             <Title>
               Hi<span>.</span>
             </Title>
             <Description>
-              I'm LekoArts and I create starters for Gatsby.js<span>.</span> <br />
-              If you're a designer (and front-end developer) like me or a photographer you'll enjoy my Gatsby projects
-              as those two groups are the target audience<span>.</span> You can bootstrap your personal project quick{' '}
-              <span>&</span> easy with my minimalistic and fast starters<span>.</span>
+              <p>
+                I'm LekoArts and I create starters for Gatsby.js<span>.</span> <br />
+                If you're a designer (and front-end developer) like me or a photographer you'll enjoy my Gatsby projects
+                as those two groups are the target audience<span>.</span> You can bootstrap your personal project quick
+                & easy with my minimalistic and fast starters<span>.</span>
+              </p>
             </Description>
             <Social>
               <Homepage role="button" href="https://www.lekoarts.de">
@@ -270,8 +343,9 @@ class Index extends Component {
                 Twitter
               </Twitter>
             </Social>
-          </Content>
+          </Intro>
           <SliderWrapper>
+            <Heading>Overview</Heading>
             <Swiper {...params}>
               {edges.map(site => {
                 const { id, title, description, preview, features, cover } = site.node;
@@ -299,6 +373,51 @@ class Index extends Component {
               })}
             </Swiper>
           </SliderWrapper>
+          <Content>
+            <Heading>Getting started</Heading>
+            <Description>
+              <p>
+                Make sure that you have <a href="https://nodejs.org/en/">Node.js</a> and{' '}
+                <a href="https://github.com/nodejs/node-gyp#installation">node-gyp</a> installed on your system. In
+                order to clone and use the starters you first have to install the{' '}
+                <a href="https://www.gatsbyjs.org/docs/">Gatsby CLI</a>.
+              </p>
+            </Description>
+            <Description long>
+              <pre>
+                <code>
+                  <span>npm install</span> --global gatsby-cli
+                </code>
+              </pre>
+              <h3>Choose one of the starters and install it!</h3>
+              <SelectWrapper>
+                <select onChange={e => this.selectChange(e)}>
+                  <option data-name="[DIRECTORY_NAME]" data-url="[GITHUB_REPO_URL]">
+                    ---
+                  </option>
+                  {edges.map(site => {
+                    const { id, url, name, title } = site.node;
+                    return (
+                      <option key={id} data-name={name} data-url={url}>
+                        {title}
+                      </option>
+                    );
+                  })}
+                </select>
+                <pre>
+                  <code>
+                    <span>gatsby new</span> <i>{this.state.name}</i> {this.state.url}
+                  </code>
+                </pre>
+              </SelectWrapper>
+              <p>Go into the newly created directory and start the development server:</p>
+              <pre>
+                <code>
+                  <span>gatsby develop</span>
+                </code>
+              </pre>
+            </Description>
+          </Content>
           <Footer>
             Design by <OutboundLink href="https://www.lekoarts.de">LekoArts</OutboundLink>.{' '}
             <OutboundLink href="https://github.com/LeKoArts/gatsby-starter-portfolio">Source</OutboundLink>.
@@ -329,6 +448,8 @@ export const overviewQuery = graphql`
         node {
           id
           title
+          url
+          name
           description
           preview
           features
