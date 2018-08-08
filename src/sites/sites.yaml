@@ -6,7 +6,7 @@
   cover: './emma.jpg'
   features:
     - CSS Grid
-    - Vibrant.js
+    - Emotion
 - title: 'Emilia'
   url: 'https://github.com/LeKoArts/gatsby-starter-portfolio-emilia'
   name: 'portfolio-emilia'
@@ -16,7 +16,7 @@
   features:
     - React Overdrive
     - CSS Grid
-    - Styled Components
+    - Emotion
 - title: 'Bella'
   url: 'https://github.com/LeKoArts/gatsby-starter-portfolio-bella'
   name: 'portfolio-bella'

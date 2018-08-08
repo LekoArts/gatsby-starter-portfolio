@@ -13,6 +13,7 @@ import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import 'typeface-montserrat';
 import favicon from '../favicon.png';
 import rightArrow from '../right-arrow.svg';
+import github from '../github.svg';
 import '../swiper.css';
 
 injectGlobal`
@@ -192,7 +193,7 @@ const Bottom = styled.div`
 `;
 
 const Preview = styled(OutboundLink)`
-  ${tw('text-white inline-block text-lg relative mb-4 py-1 tracking-wide no-underline uppercase')};
+  ${tw('text-white inline-block text-xl relative mb-0 py-1 tracking-wide no-underline uppercase')};
   img {
     width: 18px;
     height: 18px;
@@ -205,6 +206,22 @@ const Preview = styled(OutboundLink)`
     img {
       transform: translateX(10px);
     }
+  }
+`;
+
+const Repo = styled(OutboundLink)`
+  ${tw('text-white text-sm inline-block mb-4 py-1 tracking-wide no-underline opacity-75')};
+  transition: all 0.4s ease-in-out;
+  img {
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    position: relative;
+    top: 2px;
+    transition: transform 0.3s ease-in-out;
+  }
+  &:hover {
+    ${tw('opacity-100')};
   }
 `;
 
@@ -237,7 +254,7 @@ const Gradient = styled.div`
 
 const Divider = styled.div`
   ${tw('bg-orange w-16 mb-4')};
-  height: 2px;
+  height: 3px;
 `;
 
 const FeaturesWrapper = styled.div`
@@ -348,7 +365,7 @@ class Index extends Component {
             <Heading>Overview</Heading>
             <Swiper {...params}>
               {edges.map(site => {
-                const { id, title, description, preview, features, cover } = site.node;
+                const { id, title, description, preview, features, cover, url } = site.node;
                 return (
                   <Item key={id}>
                     <ItemContent>
@@ -356,6 +373,9 @@ class Index extends Component {
                         <Preview href={preview}>
                           Preview <img src={rightArrow} alt="Arrow" aria-hidden="true" />
                         </Preview>
+                        <Repo href={url}>
+                          <img src={github} alt="Arrow" aria-hidden="true" /> GitHub
+                        </Repo>
                         <Desc>{description}</Desc>
                       </Top>
                       <Bottom>
