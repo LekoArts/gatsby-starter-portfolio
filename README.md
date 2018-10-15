@@ -15,4 +15,4 @@ I hope you like my starters and create something awesome! To see some of my work
 - Gatsby v2
 - Emotion
 - TailwindCSS
-- React ID Swiper
+- CSS-Grid
