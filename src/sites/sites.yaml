@@ -1,5 +1,5 @@
 - title: 'Emma'
-  url: 'https://github.com/LeKoArts/gatsby-starter-portfolio-emma'
+  url: 'https://github.com/LekoArts/gatsby-starter-portfolio-emma'
   name: 'portfolio-emma'
   preview: 'https://portfolio-emma.netlify.com/'
   description: 'Full-width grid with large images and a light theme'
@@ -8,7 +8,7 @@
     - CSS Grid
     - Emotion
 - title: 'Emilia'
-  url: 'https://github.com/LeKoArts/gatsby-starter-portfolio-emilia'
+  url: 'https://github.com/LekoArts/gatsby-starter-portfolio-emilia'
   name: 'portfolio-emilia'
   preview: 'https://portfolio-emilia.netlify.com/'
   description: 'A dark themed One-Page layout with an image grid'
@@ -18,16 +18,16 @@
     - CSS Grid
     - Emotion
 - title: 'Bella'
-  url: 'https://github.com/LeKoArts/gatsby-starter-portfolio-bella'
+  url: 'https://github.com/LekoArts/gatsby-starter-portfolio-bella'
   name: 'portfolio-bella'
   preview: 'https://portfolio-bella.netlify.com/'
-  description: 'A bright single-page portfolio powered by Prismic.io'
+  description: 'A bright single-page portfolio powered by Prismic'
   cover: './bella.jpg'
   features:
     - Prismic.io
     - Emotion
 - title: 'Cara'
-  url: 'https://github.com/LeKoArts/gatsby-starter-portfolio-cara'
+  url: 'https://github.com/LekoArts/gatsby-starter-portfolio-cara'
   name: 'portfolio-cara'
   preview: 'https://portfolio-cara.netlify.com/'
   description: 'Playful & Colorful One-Page website with Parallax effect'
@@ -37,7 +37,7 @@
     - React Spring
     - Emotion
 - title: 'Minimal Blog'
-  url: 'https://github.com/LeKoArts/gatsby-starter-minimal-blog'
+  url: 'https://github.com/LekoArts/gatsby-starter-minimal-blog'
   name: 'minimal-blog'
   preview: 'https://minimal-blog.netlify.com/'
   description: 'Minimal blog focused on the content'
@@ -45,3 +45,14 @@
   features:
     - Styled Components
     - Markdown
+- title: 'Prismic'
+  url: 'https://github.com/LekoArts/gatsby-starter-prismic'
+  name: 'prismic'
+  preview: 'https://gatsby-starter-prismic.netlify.com/'
+  description: 'Typography-heavy & light-themed starter powered by Prismic'
+  cover: './prismic.jpg'
+  features:
+    - Prismic.io
+    - Emotion
+    - Gatsby-Image
+    - PrismJS
