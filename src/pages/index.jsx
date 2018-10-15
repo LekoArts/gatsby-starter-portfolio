@@ -4,17 +4,18 @@
 /* eslint no-return-assign: 0 */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Swiper from 'react-id-swiper';
 import styled, { injectGlobal } from 'react-emotion';
 import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import 'typeface-montserrat';
+import Content from '../components/Content';
+import Description from '../components/Description';
+import Header from '../components/Header';
 import favicon from '../favicon.png';
 import rightArrow from '../right-arrow.svg';
 import github from '../github.svg';
-import '../swiper.css';
 
 injectGlobal`
   *::before,
@@ -35,30 +36,6 @@ injectGlobal`
     border: 0;
     margin: 0;
     padding: 0;
-  }
-  .swiper-container {
-    padding-bottom: 4rem;
-    padding-top: 4rem;
-  }
-  .swiper-button-prev, .swiper-button-next {
-    top: 0;
-    margin-top: 0;
-    padding-left: 4px;
-    padding-right: 4px;
-    transform: scale(1.4);
-    width: 44px;
-    transition: transform 0.2s ease-in-out;
-    background-size: 35px 35px;
-  }
-  .swiper-button-prev.swiper-button-disabled,
-  .swiper-button-next.swiper-button-disabled {
-    transform: scale(1);
-  }
-  .swiper-button-prev {
-    left: 0;
-  }
-  .swiper-button-next {
-    left: 60px;
   }
   select {
     appearance: none;
@@ -100,70 +77,6 @@ const Page = styled.div`
   }
 `;
 
-const Content = styled.section`
-  ${tw('sm:px-8 px-4 md:px-24')};
-`;
-
-const Intro = styled(Content)`
-  ${tw('py-8 md:py-16')};
-`;
-
-const Title = styled.h1`
-  ${tw('text-3xl md:text-5xl')};
-  span {
-    ${tw('text-orange')};
-  }
-`;
-
-const Description = styled.div`
-  ${tw('text-sm sm:text-base md:text-lg max-w-lg text-grey-lighter')};
-  span {
-    ${tw('text-orange')};
-  }
-  a {
-    ${tw('no-underline text-orange hover:text-orange-light')};
-  }
-  pre {
-    ${tw('bg-indigo-darker rounded px-4 py-2 shadow-md mb-8')};
-  }
-  code {
-    ${tw('break-normal whitespace-pre-line text-grey')};
-    word-spacing: normal;
-    word-break: normal;
-    tab-size: 4;
-    span {
-      ${tw('text-yellow')};
-    }
-  }
-  ${props => props.long && 'max-width: 60rem'};
-`;
-
-const Social = styled.section`
-  ${tw('flex flex-wrap items-center justify-center sm:justify-start mt-8')};
-`;
-
-const Button = styled(OutboundLink)`
-  ${tw(
-    'cursor-pointer text-sm md:text-base mx-2 sm:mx-0 py-2 px-4 md:px-8 rounded-full no-underline shadow-md focus:outline-none focus:shadow-outline'
-  )};
-  transition: all 0.3s ease-in-out;
-  &:hover {
-    transform: translateY(-1px);
-  }
-`;
-
-const Homepage = styled(Button)`
-  ${tw('bg-indigo text-white')};
-`;
-
-const GitHub = styled(Button)`
-  ${tw('bg-grey-dark text-white sm:mx-4 my-4 sm:my-0')};
-`;
-
-const Twitter = styled(Button)`
-  ${tw('bg-blue text-white')};
-`;
-
 const SliderWrapper = styled.section`
   ${tw('sm:px-8 px-4 md:px-24')};
 `;
@@ -176,8 +89,11 @@ const Footer = styled.footer`
 `;
 
 const Item = styled.div`
-  ${tw('w-64 bg-black rounded-lg shadow-lg flex')};
+  ${tw('bg-black rounded-lg shadow-lg flex')};
   height: 525px;
+  @media (max-width: 500px) {
+    height: 450px;
+  }
 `;
 
 const ItemContent = styled.div`
@@ -185,7 +101,7 @@ const ItemContent = styled.div`
 `;
 
 const Top = styled.div`
-  ${tw('z-30')};
+  ${tw('z-30 flex flex-col')};
 `;
 
 const Bottom = styled.div`
@@ -270,6 +186,13 @@ const SelectWrapper = styled.div`
   ${tw('mb-12')};
 `;
 
+const Grid = styled.div`
+  ${tw('py-12')};
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-gap: 30px;
+`;
+
 class Index extends Component {
   state = {
     name: '[DIRECTORY_NAME]',
@@ -291,19 +214,7 @@ class Index extends Component {
       },
     } = this.props;
 
-    const params = {
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      slidesPerView: 'auto',
-      spaceBetween: 40,
-      breakpoints: {
-        460: {
-          slidesPerView: 1,
-        },
-      },
-    };
+    const { name, url } = this.state;
 
     return (
       <React.Fragment>
@@ -315,9 +226,6 @@ class Index extends Component {
             content="Gatsby.js Starters by LekoArts. Primarily aimed at Designers & Photographers. Minimalistic & fast websites!"
           />
           <meta name="image" content={favicon} />
-          <meta charSet="utf-8" />
-          <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta property="og:locale" content="en_US" />
           <meta property="og:site_name" content="lekoarts.de" />
           <meta property="og:url" content="https://gatsby-starter-portfolio.netlify.com" />
@@ -337,33 +245,10 @@ class Index extends Component {
           <meta name="twitter:image" content={favicon} />
         </Helmet>
         <Page>
-          <Intro>
-            <Title>
-              Hi<span>.</span>
-            </Title>
-            <Description>
-              <p>
-                I'm LekoArts and I create starters for Gatsby.js<span>.</span> <br />
-                If you're a designer (and front-end developer) like me or a photographer you'll enjoy my Gatsby projects
-                as those two groups are the target audience<span>.</span> You can bootstrap your personal project quick
-                & easy with my minimalistic and fast starters<span>.</span>
-              </p>
-            </Description>
-            <Social>
-              <Homepage role="button" href="https://www.lekoarts.de">
-                Homepage
-              </Homepage>
-              <GitHub role="button" href="https://github.com/LeKoArts">
-                GitHub
-              </GitHub>
-              <Twitter role="button" href="https://twitter.com/lekoarts_de">
-                Twitter
-              </Twitter>
-            </Social>
-          </Intro>
+          <Header />
           <SliderWrapper>
             <Heading>Overview</Heading>
-            <Swiper {...params}>
+            <Grid>
               {edges.map(site => {
                 const { id, title, description, preview, features, cover, url } = site.node;
                 return (
@@ -391,7 +276,7 @@ class Index extends Component {
                   </Item>
                 );
               })}
-            </Swiper>
+            </Grid>
           </SliderWrapper>
           <Content>
             <Heading>Getting started</Heading>
@@ -426,7 +311,7 @@ class Index extends Component {
                 </select>
                 <pre>
                   <code>
-                    <span>gatsby new</span> <i>{this.state.name}</i> {this.state.url}
+                    <span>gatsby new</span> <i>{name}</i> {url}
                   </code>
                 </pre>
               </SelectWrapper>

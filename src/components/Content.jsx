@@ -1,0 +1,8 @@
+/* global tw */
+import styled from 'react-emotion';
+
+const Content = styled.section`
+  ${tw('sm:px-8 px-4 md:px-24')};
+`;
+
+export default Content;
