@@ -1,5 +1,5 @@
 /* global tw */
-import styled from 'react-emotion';
+import styled from 'styled-components';
 
 const Description = styled.div`
   ${tw('text-sm sm:text-base md:text-lg max-w-lg text-grey-lighter')};

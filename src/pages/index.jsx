@@ -4,7 +4,7 @@
 /* eslint no-return-assign: 0 */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styled, { injectGlobal } from 'react-emotion';
+import styled, { createGlobalStyle } from 'styled-components';
 import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
@@ -17,7 +17,7 @@ import favicon from '../favicon.png';
 import rightArrow from '../right-arrow.svg';
 import github from '../github.svg';
 
-injectGlobal`
+createGlobalStyle`
   *::before,
   *::after {
     box-sizing: border-box;
