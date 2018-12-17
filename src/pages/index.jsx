@@ -17,7 +17,7 @@ import favicon from '../favicon.png';
 import rightArrow from '../right-arrow.svg';
 import github from '../github.svg';
 
-createGlobalStyle`
+const GlobalStyles = createGlobalStyle`
   *::before,
   *::after {
     box-sizing: border-box;
@@ -328,6 +328,7 @@ class Index extends Component {
             <OutboundLink href="https://github.com/LeKoArts/gatsby-starter-portfolio">Source</OutboundLink>.
           </Footer>
         </Page>
+        <GlobalStyles />
       </React.Fragment>
     );
   }
