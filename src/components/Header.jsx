@@ -1,6 +1,6 @@
 /* global tw */
 import React from 'react';
-import styled from 'react-emotion';
+import styled from 'styled-components';
 import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import Content from './Content';
 import Description from './Description';
