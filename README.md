@@ -12,7 +12,6 @@ I hope you like my starters and create something awesome! To see some of my work
 
 ## Site
 
-- Gatsby v2
-- Emotion
+- styled-components
 - TailwindCSS
 - CSS-Grid
