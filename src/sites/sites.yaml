@@ -6,7 +6,8 @@
   cover: './emma.jpg'
   features:
     - CSS Grid
-    - Emotion
+    - Styled Components
+    - MDX
 - title: 'Emilia'
   url: 'https://github.com/LekoArts/gatsby-starter-portfolio-emilia'
   name: 'portfolio-emilia'
