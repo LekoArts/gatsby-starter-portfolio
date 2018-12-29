@@ -4,8 +4,8 @@ module.exports = {
     siteUrl: 'https://gatsby-starter-portfolio.netlify.com',
   },
   plugins: [
-    'gatsby-plugin-styled-components',
     'gatsby-plugin-react-helmet',
+    'gatsby-plugin-styled-components',
     'gatsby-transformer-yaml',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
