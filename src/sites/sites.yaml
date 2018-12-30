@@ -6,7 +6,7 @@
   cover: './emma.jpg'
   features:
     - CSS Grid
-    - Styled Components
+    - styled-components
     - MDX
 - title: 'Emilia'
   url: 'https://github.com/LekoArts/gatsby-starter-portfolio-emilia'
@@ -36,7 +36,7 @@
   cover: './cara.jpg'
   features:
     - TailwindCSS
-    - React Spring
+    - react-spring
     - styled-components
 - title: 'Minimal Blog'
   url: 'https://github.com/LekoArts/gatsby-starter-minimal-blog'
@@ -45,7 +45,7 @@
   description: 'Minimal blog focused on the content'
   cover: './minimal.jpg'
   features:
-    - Styled Components
+    - styled-components
     - Markdown
 - title: 'Prismic'
   url: 'https://github.com/LekoArts/gatsby-starter-prismic'
