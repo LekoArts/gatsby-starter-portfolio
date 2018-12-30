@@ -31,13 +31,13 @@
 - title: 'Cara'
   url: 'https://github.com/LekoArts/gatsby-starter-portfolio-cara'
   name: 'portfolio-cara'
-  preview: 'https://portfolio-cara.netlify.com/'
+  preview: 'https://cara.lekoarts.de'
   description: 'Playful & Colorful One-Page website with Parallax effect'
   cover: './cara.jpg'
   features:
     - TailwindCSS
     - React Spring
-    - Emotion
+    - styled-components
 - title: 'Minimal Blog'
   url: 'https://github.com/LekoArts/gatsby-starter-minimal-blog'
   name: 'minimal-blog'
