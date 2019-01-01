@@ -1,21 +1,21 @@
-/* global tw */
-/* eslint no-unused-expressions: 0 */
-/* eslint react/prefer-stateless-function: 0 */
-/* eslint no-return-assign: 0 */
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import styled, { createGlobalStyle } from 'styled-components';
-import Helmet from 'react-helmet';
-import { graphql } from 'gatsby';
-import Img from 'gatsby-image';
-import { OutboundLink } from 'gatsby-plugin-google-analytics';
-import 'typeface-montserrat';
-import Content from '../components/Content';
-import Description from '../components/Description';
-import Header from '../components/Header';
-import favicon from '../favicon.png';
-import rightArrow from '../right-arrow.svg';
-import github from '../github.svg';
+/* eslint no-shadow: 0 */
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import styled, { createGlobalStyle } from 'styled-components'
+import Helmet from 'react-helmet'
+import { graphql } from 'gatsby'
+import Img from 'gatsby-image'
+import tw from 'tailwind.macro'
+import { OutboundLink } from 'gatsby-plugin-google-analytics'
+import 'typeface-montserrat'
+
+import Content from '../components/Content'
+import Description from '../components/Description'
+import Header from '../components/Header'
+
+import favicon from '../favicon.png'
+import rightArrow from '../right-arrow.svg'
+import github from '../github.svg'
 
 const GlobalStyles = createGlobalStyle`
   *::before,
@@ -63,53 +63,51 @@ const GlobalStyles = createGlobalStyle`
     background: #6574cd;
     font-size: 1rem;
   }
-`;
+`
 
 const Page = styled.div`
-  ${tw(
-    'text-white font-sans p-0 m-0 bg-indigo-darker antialiased border-8 sm:border-16 border-solid border-indigo leading-normal relative'
-  )};
+  ${tw`text-white font-sans p-0 m-0 bg-indigo-darker antialiased border-8 sm:border-16 border-solid border-indigo leading-normal relative`};
   background: #191e38
     url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.184 20c.357-.13.72-.264 1.088-.402l1.768-.661C33.64 15.347 39.647 14 50 14c10.271 0 15.362 1.222 24.629 4.928.955.383 1.869.74 2.75 1.072h6.225c-2.51-.73-5.139-1.691-8.233-2.928C65.888 13.278 60.562 12 50 12c-10.626 0-16.855 1.397-26.66 5.063l-1.767.662c-2.475.923-4.66 1.674-6.724 2.275h6.335zm0-20C13.258 2.892 8.077 4 0 4V2c5.744 0 9.951-.574 14.85-2h6.334zM77.38 0C85.239 2.966 90.502 4 100 4V2c-6.842 0-11.386-.542-16.396-2h-6.225zM0 14c8.44 0 13.718-1.21 22.272-4.402l1.768-.661C33.64 5.347 39.647 4 50 4c10.271 0 15.362 1.222 24.629 4.928C84.112 12.722 89.438 14 100 14v-2c-10.271 0-15.362-1.222-24.629-4.928C65.888 3.278 60.562 2 50 2 39.374 2 33.145 3.397 23.34 7.063l-1.767.662C13.223 10.84 8.163 12 0 12v2z' fill='%232f365f' fill-opacity='0.2' fill-rule='evenodd'/%3E%3C/svg%3E");
   min-height: calc(100vh - 16px);
   @media (min-width: 576px) {
     min-height: calc(100vh - 32px);
   }
-`;
+`
 
 const SliderWrapper = styled.section`
-  ${tw('sm:px-8 px-4 md:px-24')};
-`;
+  ${tw`sm:px-8 px-4 md:px-24`};
+`
 
 const Footer = styled.footer`
-  ${tw('text-center pb-6 pt-12 text-xs text-grey-light tracking-wide z-50 uppercase')};
+  ${tw`text-center pb-6 pt-12 text-xs text-grey-light tracking-wide z-50 uppercase`};
   a {
-    ${tw('text-orange hover:text-orange-light no-underline')};
+    ${tw`text-orange hover:text-orange-light no-underline`};
   }
-`;
+`
 
 const Item = styled.div`
-  ${tw('bg-black rounded-lg shadow-lg flex')};
+  ${tw`bg-black rounded-lg shadow-lg flex`};
   height: 525px;
   @media (max-width: 500px) {
     height: 450px;
   }
-`;
+`
 
 const ItemContent = styled.div`
-  ${tw('py-8 px-6 flex flex-wrap content-between relative')};
-`;
+  ${tw`py-8 px-6 flex flex-wrap content-between relative`};
+`
 
 const Top = styled.div`
-  ${tw('z-30 flex flex-col')};
-`;
+  ${tw`z-30 flex flex-col`};
+`
 
 const Bottom = styled.div`
-  ${tw('z-30')};
-`;
+  ${tw`z-30`};
+`
 
 const Preview = styled(OutboundLink)`
-  ${tw('text-white inline-block text-xl relative mb-0 py-1 tracking-wide no-underline uppercase')};
+  ${tw`text-white inline-block text-xl relative mb-0 py-1 tracking-wide no-underline uppercase`};
   img {
     width: 18px;
     height: 18px;
@@ -123,10 +121,10 @@ const Preview = styled(OutboundLink)`
       transform: translateX(10px);
     }
   }
-`;
+`
 
 const Repo = styled(OutboundLink)`
-  ${tw('text-white text-sm inline-block mb-4 py-1 tracking-wide no-underline opacity-75')};
+  ${tw`text-white text-sm inline-block mb-4 py-1 tracking-wide no-underline opacity-75`};
   transition: all 0.4s ease-in-out;
   img {
     width: 16px;
@@ -137,16 +135,16 @@ const Repo = styled(OutboundLink)`
     transition: transform 0.3s ease-in-out;
   }
   &:hover {
-    ${tw('opacity-100')};
+    ${tw`opacity-100`};
   }
-`;
+`
 
 const Desc = styled.div`
-  ${tw('text-sm text-white opacity-75')};
-`;
+  ${tw`text-sm text-white opacity-75`};
+`
 
 const BGImage = styled.div`
-  ${tw('absolute pin rounded-lg')};
+  ${tw`absolute pin rounded-lg`};
   .gatsby-image-outer-wrapper {
     position: static !important;
   }
@@ -154,57 +152,57 @@ const BGImage = styled.div`
     position: static !important;
   }
   img {
-    ${tw('rounded-lg')};
+    ${tw`rounded-lg`};
     opacity: 0.5 !important;
   }
-`;
+`
 
 const ItemTitle = styled.h2`
-  ${tw('text-white text-3xl mb-4')};
-`;
+  ${tw`text-white text-3xl mb-4`};
+`
 
 const Gradient = styled.div`
-  ${tw('absolute pin rounded-lg z-20')};
+  ${tw`absolute pin rounded-lg z-20`};
   background: linear-gradient(to top, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.75) 100%);
-`;
+`
 
 const Divider = styled.div`
-  ${tw('bg-orange w-16 mb-4')};
+  ${tw`bg-orange w-16 mb-4`};
   height: 3px;
-`;
+`
 
 const FeaturesWrapper = styled.div`
-  ${tw('text-grey-lighter text-xs flex items-end')};
+  ${tw`text-grey-lighter text-xs flex items-end`};
   min-height: 50px;
-`;
+`
 
 const Heading = styled.h2`
-  ${tw('text-2xl md:text-4xl font-normal')};
-`;
+  ${tw`text-2xl md:text-4xl font-normal`};
+`
 
 const SelectWrapper = styled.div`
-  ${tw('mb-12')};
-`;
+  ${tw`mb-12`};
+`
 
 const Grid = styled.div`
-  ${tw('py-12')};
+  ${tw`py-12`};
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   grid-gap: 30px;
-`;
+`
 
 class Index extends Component {
   state = {
     name: '[DIRECTORY_NAME]',
     url: '[GITHUB_REPO_URL]',
-  };
+  }
 
   selectChange = event => {
     this.setState({
       name: event.target.selectedOptions[0].dataset.name,
       url: event.target.selectedOptions[0].dataset.url,
-    });
-  };
+    })
+  }
 
   render() {
     const {
@@ -212,9 +210,9 @@ class Index extends Component {
         allSitesYaml: { edges },
         site: { siteMetadata },
       },
-    } = this.props;
+    } = this.props
 
-    const { name, url } = this.state;
+    const { name, url } = this.state
 
     return (
       <React.Fragment>
@@ -250,7 +248,7 @@ class Index extends Component {
             <Heading>Overview</Heading>
             <Grid>
               {edges.map(site => {
-                const { id, title, description, preview, features, cover, url } = site.node;
+                const { id, title, description, preview, features, cover, url } = site.node
                 return (
                   <Item key={id}>
                     <ItemContent>
@@ -274,7 +272,7 @@ class Index extends Component {
                       </BGImage>
                     </ItemContent>
                   </Item>
-                );
+                )
               })}
             </Grid>
           </SliderWrapper>
@@ -301,12 +299,12 @@ class Index extends Component {
                     ---
                   </option>
                   {edges.map(site => {
-                    const { id, url, name, title } = site.node;
+                    const { id, url, name, title } = site.node
                     return (
                       <option key={id} data-name={name} data-url={url}>
                         {title}
                       </option>
-                    );
+                    )
                   })}
                 </select>
                 <pre>
@@ -330,11 +328,11 @@ class Index extends Component {
         </Page>
         <GlobalStyles />
       </React.Fragment>
-    );
+    )
   }
 }
 
-export default Index;
+export default Index
 
 Index.propTypes = {
   data: PropTypes.shape({
@@ -345,7 +343,7 @@ Index.propTypes = {
       siteMetadata: PropTypes.object.isRequired,
     }),
   }).isRequired,
-};
+}
 
 export const overviewQuery = graphql`
   query OverviewQuery {
@@ -375,4 +373,4 @@ export const overviewQuery = graphql`
       }
     }
   }
-`;
+`
