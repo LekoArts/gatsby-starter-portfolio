@@ -6,28 +6,20 @@
   cover: './emma.jpg'
   features:
     - CSS Grid
+    - Animations
     - styled-components
     - MDX
 - title: 'Emilia'
   url: 'https://github.com/LekoArts/gatsby-starter-portfolio-emilia'
   name: 'portfolio-emilia'
   preview: 'https://emilia.lekoarts.de'
-  description: 'A dark themed One-Page layout with an image grid'
+  description: 'A dark themed, image-heavy layout'
   cover: './emilia.jpg'
   features:
     - react-spring
     - CSS Grid
     - MDX
     - Animations & Transitions
-- title: 'Bella'
-  url: 'https://github.com/LekoArts/gatsby-starter-portfolio-bella'
-  name: 'portfolio-bella'
-  preview: 'https://portfolio-bella.netlify.com/'
-  description: 'A bright single-page portfolio powered by Prismic'
-  cover: './bella.jpg'
-  features:
-    - Prismic.io
-    - Emotion
 - title: 'Cara'
   url: 'https://github.com/LekoArts/gatsby-starter-portfolio-cara'
   name: 'portfolio-cara'
@@ -41,12 +33,13 @@
 - title: 'Minimal Blog'
   url: 'https://github.com/LekoArts/gatsby-starter-minimal-blog'
   name: 'minimal-blog'
-  preview: 'https://minimal-blog.netlify.com/'
-  description: 'Minimal blog focused on the content'
+  preview: 'https://minimal-blog.lekoarts.de'
+  description: 'Typography driven, focus on the content & minimal style'
   cover: './minimal.jpg'
   features:
     - styled-components
-    - Markdown
+    - MDX
+    - react-live
 - title: 'Prismic'
   url: 'https://github.com/LekoArts/gatsby-starter-prismic'
   name: 'prismic'
@@ -58,3 +51,12 @@
     - Emotion
     - Gatsby-Image
     - PrismJS
+- title: 'Bella'
+  url: 'https://github.com/LekoArts/gatsby-starter-portfolio-bella'
+  name: 'portfolio-bella'
+  preview: 'https://portfolio-bella.netlify.com/'
+  description: 'A bright single-page portfolio powered by Prismic'
+  cover: './bella.jpg'
+  features:
+    - Prismic.io
+    - Emotion

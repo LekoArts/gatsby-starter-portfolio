@@ -1,5 +1,3 @@
-tailwind.custom.css
-
 # Logs
 logs
 *.log
@@ -63,3 +61,4 @@ typings/
 public
 yarn-error.log
 .idea
+.vscode
