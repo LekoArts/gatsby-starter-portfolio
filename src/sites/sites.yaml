@@ -43,7 +43,7 @@
 - title: 'Prismic'
   url: 'https://github.com/LekoArts/gatsby-starter-prismic'
   name: 'prismic'
-  preview: 'https://gatsby-starter-prismic.netlify.com/'
+  preview: 'https://prismic.lekoarts.de'
   description: 'Typography-heavy & light-themed starter powered by Prismic'
   cover: './prismic.jpg'
   features:
