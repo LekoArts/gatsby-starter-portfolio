@@ -1,6 +1,7 @@
 {
   "name": "gatsby-starter-portfolio",
   "description": "Gatsby Starter Portfolio Overview by LekoArts",
+  "private": true,
   "license": "MIT",
   "scripts": {
     "dev": "gatsby develop -o",
