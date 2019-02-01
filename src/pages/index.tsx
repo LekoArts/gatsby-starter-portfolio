@@ -1,6 +1,4 @@
-/* eslint no-shadow: 0 */
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import * as React from 'react'
 import styled, { createGlobalStyle } from 'styled-components'
 import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
@@ -49,7 +47,7 @@ const GlobalStyles = createGlobalStyle`
     background-size: 25px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,.12), 0 2px 4px 0 rgba(0,0,0,.08);
     &:focus {
-      outline: 0px;
+      outline: 0;
       box-shadow: 0 0 0 3px rgba(101,116,205,.5);
     }
     &:hover {
@@ -191,13 +189,39 @@ const Grid = styled.div`
   grid-gap: 30px;
 `
 
-class Index extends Component {
+interface PageProps {
+  data: {
+    allSitesYaml: {
+      edges: {
+        node: any
+      }[]
+    }
+    site: {
+      siteMetadata: {
+        siteTitle: string
+      }
+    }
+  }
+}
+
+interface SelectChangeInterface {
+  target: {
+    selectedOptions: {
+      dataset: {
+        name: string
+        url: string
+      }
+    }[]
+  }
+}
+
+class Index extends React.Component<PageProps> {
   state = {
     name: '[DIRECTORY_NAME]',
     url: '[GITHUB_REPO_URL]',
   }
 
-  selectChange = event => {
+  selectChange = (event: SelectChangeInterface) => {
     this.setState({
       name: event.target.selectedOptions[0].dataset.name,
       url: event.target.selectedOptions[0].dataset.url,
@@ -215,7 +239,7 @@ class Index extends Component {
     const { name, url } = this.state
 
     return (
-      <React.Fragment>
+      <>
         <Helmet>
           <html lang="en" />
           <title>{siteMetadata.siteTitle}</title>
@@ -286,7 +310,7 @@ class Index extends Component {
                 <a href="https://www.gatsbyjs.org/docs/">Gatsby CLI</a>.
               </p>
             </Description>
-            <Description long>
+            <Description long={true}>
               <pre>
                 <code>
                   <span>npm install</span> --global gatsby-cli
@@ -327,23 +351,12 @@ class Index extends Component {
           </Footer>
         </Page>
         <GlobalStyles />
-      </React.Fragment>
+      </>
     )
   }
 }
 
 export default Index
-
-Index.propTypes = {
-  data: PropTypes.shape({
-    allSitesYaml: PropTypes.shape({
-      edges: PropTypes.array.isRequired,
-    }),
-    site: PropTypes.shape({
-      siteMetadata: PropTypes.object.isRequired,
-    }),
-  }).isRequired,
-}
 
 export const overviewQuery = graphql`
   query OverviewQuery {
