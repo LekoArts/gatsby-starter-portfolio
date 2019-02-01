@@ -1,14 +1,15 @@
 {
   "name": "gatsby-starter-portfolio",
   "description": "Gatsby Starter Portfolio Overview by LekoArts",
+  "private": true,
   "license": "MIT",
   "scripts": {
     "dev": "gatsby develop -o",
     "develop": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "lint": "eslint . --ext .js,.jsx --ignore-path .gitignore",
-    "lint:fix": "eslint . --ext .js,.jsx --fix --ignore-path .gitignore",
+    "lint": "tslint -t stylish -p .",
+    "lint:fix": "tslint -p tsconfig.json -t stylish --fix 'src/**/*.ts'",
     "format": "prettier --write src/sites/sites.yaml"
   },
   "dependencies": {
@@ -22,10 +23,10 @@
     "gatsby-plugin-react-helmet": "^3.0.5",
     "gatsby-plugin-sharp": "^2.0.17",
     "gatsby-plugin-styled-components": "^3.0.4",
+    "gatsby-plugin-typescript": "^2.0.6",
     "gatsby-source-filesystem": "^2.0.12",
     "gatsby-transformer-sharp": "^2.1.9",
     "gatsby-transformer-yaml": "^2.1.6",
-    "prop-types": "^15.6.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-helmet": "^5.2.0",
@@ -33,17 +34,20 @@
     "styled-components": "^4.1.3",
     "tailwind.macro": "^0.5.10",
     "tailwindcss": "^0.7.3",
-    "typeface-montserrat": "^0.0.54"
+    "typeface-montserrat": "^0.0.54",
+    "typescript": "^3.3.1"
   },
   "devDependencies": {
-    "babel-eslint": "^10.0.1",
-    "eslint": "^5.11.1",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-config-prettier": "^3.3.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jsx-a11y": "^6.1.2",
-    "eslint-plugin-prettier": "^3.0.1",
-    "eslint-plugin-react": "^7.12.0",
-    "prettier": "^1.15.3"
+    "@types/node": "^10.12.21",
+    "@types/react": "^16.7.22",
+    "@types/react-dom": "^16.0.11",
+    "@types/react-helmet": "^5.0.8",
+    "@types/styled-components": "^4.1.6",
+    "prettier": "^1.15.3",
+    "tslint": "^5.12.1",
+    "tslint-config-airbnb": "^5.11.1",
+    "tslint-config-prettier": "^1.17.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "tslint-react": "^3.6.0"
   }
 }

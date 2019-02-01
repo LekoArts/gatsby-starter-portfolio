@@ -14,4 +14,5 @@ I hope you like my starters and create something awesome! To see some of my work
 
 - styled-components
 - TailwindCSS
+- TypeScript
 - CSS-Grid
