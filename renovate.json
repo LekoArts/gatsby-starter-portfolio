@@ -16,6 +16,10 @@
       "groupName": "gatsby"
     },
     {
+      "packagePatterns": ["@types"],
+      "groupName": "types"
+    },
+    {
       "packageNames": ["react", "react-dom"],
       "groupName": "react"
     }
