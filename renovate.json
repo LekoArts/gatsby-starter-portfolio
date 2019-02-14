@@ -16,7 +16,7 @@
       "groupName": "gatsby"
     },
     {
-      "packagePatterns": ["@types"],
+      "packagePatterns": ["^@types"],
       "groupName": "types"
     },
     {
