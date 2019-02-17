@@ -2,6 +2,7 @@ module.exports = {
   siteMetadata: {
     siteTitle: 'Gatsby Starter Portfolio Overview by LekoArts',
     siteUrl: 'https://gatsby-starter-portfolio.netlify.com',
+    siteDescription: 'Gatsby.js Starters by LekoArts. Primarily aimed at Designers & Photographers. Minimalistic & fast websites!'
   },
   plugins: [
     'gatsby-plugin-react-helmet',

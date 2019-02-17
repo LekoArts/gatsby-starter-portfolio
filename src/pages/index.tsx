@@ -199,6 +199,8 @@ interface PageProps {
     site: {
       siteMetadata: {
         siteTitle: string
+        siteDescription: string
+        siteUrl: string
       }
     }
   }
@@ -229,27 +231,18 @@ const Index: React.FunctionComponent<PageProps> = ({
       <Helmet>
         <html lang="en" />
         <title>{siteMetadata.siteTitle}</title>
-        <meta
-          name="description"
-          content="Gatsby.js Starters by LekoArts. Primarily aimed at Designers & Photographers. Minimalistic & fast websites!"
-        />
+        <meta name="description" content={siteMetadata.siteDescription} />
         <meta name="image" content={favicon} />
         <meta property="og:locale" content="en_US" />
         <meta property="og:site_name" content="lekoarts.de" />
-        <meta property="og:url" content="https://gatsby-starter-portfolio.netlify.com" />
-        <meta property="og:title" content="Gatsby Starter Portfolio Overview by LekoArts" />
-        <meta
-          property="og:description"
-          content="Gatsby.js starters by LekoArts. Primarily aimed at Designers & Photographers. Minimalistic & fast websites!"
-        />
+        <meta property="og:url" content={siteMetadata.siteUrl} />
+        <meta property="og:title" content={siteMetadata.siteTitle} />
+        <meta property="og:description" content={siteMetadata.siteDescription} />
         <meta property="og:image" content={favicon} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:creator" content="@lekoarts.de" />
-        <meta name="twitter:title" content="Gatsby Starter Portfolio Overview by LekoArts" />
-        <meta
-          name="twitter:description"
-          content="Gatsby.js starters by LekoArts. Primarily aimed at Designers & Photographers. Minimalistic & fast websites!"
-        />
+        <meta name="twitter:title" content={siteMetadata.siteTitle} />
+        <meta name="twitter:description" content={siteMetadata.siteDescription} />
         <meta name="twitter:image" content={favicon} />
       </Helmet>
       <Page>
@@ -370,6 +363,8 @@ export const overviewQuery = graphql`
     site {
       siteMetadata {
         siteTitle
+        siteUrl
+        siteDescription
       }
     }
   }
