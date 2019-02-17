@@ -78,7 +78,7 @@ const SliderWrapper = styled.section`
 `
 
 const Footer = styled.footer`
-  ${tw`text-center pb-6 pt-12 text-xs text-grey-light tracking-wide z-50 uppercase`};
+  ${tw`text-center pb-8 pt-16 text-xs text-grey-light tracking-wide z-50 uppercase`};
   a {
     ${tw`text-orange hover:text-orange-light no-underline`};
   }
@@ -306,16 +306,12 @@ class Index extends React.Component<PageProps> {
               <p>
                 Make sure that you have <a href="https://nodejs.org/en/">Node.js</a> and{' '}
                 <a href="https://github.com/nodejs/node-gyp#installation">node-gyp</a> installed on your system. In
-                order to clone and use the starters you first have to install the{' '}
-                <a href="https://www.gatsbyjs.org/docs/">Gatsby CLI</a>.
+                order to use{' '}
+                <a href="https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b">npx</a>{' '}
+                you'll need to have an up-to-date npm version installed.
               </p>
             </Description>
             <Description long={true}>
-              <pre>
-                <code>
-                  <span>npm install</span> --global gatsby-cli
-                </code>
-              </pre>
               <h3>Choose one of the starters and install it!</h3>
               <SelectWrapper>
                 <select onChange={e => this.selectChange(e)}>
@@ -333,14 +329,21 @@ class Index extends React.Component<PageProps> {
                 </select>
                 <pre>
                   <code>
-                    <span>gatsby new</span> <i>{name}</i> {url}
+                    <span>$ npx gatsby new</span> <i>{name}</i> {url}
                   </code>
                 </pre>
               </SelectWrapper>
-              <p>Go into the newly created directory and start the development server:</p>
+              <p>Go into the newly created directory:</p>
               <pre>
                 <code>
-                  <span>gatsby develop</span>
+                  <span>$ cd </span>
+                  <i>{name}</i>
+                </code>
+              </pre>
+              <p>Start the development server:</p>
+              <pre>
+                <code>
+                  <span>$ npm run develop</span>
                 </code>
               </pre>
             </Description>

@@ -1,7 +1,3 @@
-declare module 'tailwind.macro' {
-  interface TW {
-    tw: any
-  }
-  const macro: TW
-  export = macro
-}
+declare module 'tailwind.macro'
+declare module '*.png'
+declare module '*.svg'
