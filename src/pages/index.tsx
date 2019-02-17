@@ -204,159 +204,143 @@ interface PageProps {
   }
 }
 
-interface SelectChangeInterface {
-  target: {
-    selectedOptions: {
-      dataset: {
-        name: string
-        url: string
-      }
-    }[]
-  }
-}
+const Index: React.FunctionComponent<PageProps> = ({
+  data: {
+    allSitesYaml: { edges },
+    site: { siteMetadata },
+  },
+}) => {
+  const [info, setInfo] = React.useState({ name: '[DIRECTORY_NAME]', url: '[GITHUB_REPO_URL]' })
+  const { name, url } = info
 
-class Index extends React.Component<PageProps> {
-  state = {
-    name: '[DIRECTORY_NAME]',
-    url: '[GITHUB_REPO_URL]',
-  }
+  const selectChange = (event: React.FormEvent<HTMLSelectElement>) => {
+    event.preventDefault()
 
-  selectChange = (event: SelectChangeInterface) => {
-    this.setState({
-      name: event.target.selectedOptions[0].dataset.name,
-      url: event.target.selectedOptions[0].dataset.url,
+    const element = event.target as HTMLSelectElement
+
+    setInfo({
+      name: element.selectedOptions[0].dataset.name,
+      url: element.selectedOptions[0].dataset.url,
     })
   }
 
-  render() {
-    const {
-      data: {
-        allSitesYaml: { edges },
-        site: { siteMetadata },
-      },
-    } = this.props
-
-    const { name, url } = this.state
-
-    return (
-      <>
-        <Helmet>
-          <html lang="en" />
-          <title>{siteMetadata.siteTitle}</title>
-          <meta
-            name="description"
-            content="Gatsby.js Starters by LekoArts. Primarily aimed at Designers & Photographers. Minimalistic & fast websites!"
-          />
-          <meta name="image" content={favicon} />
-          <meta property="og:locale" content="en_US" />
-          <meta property="og:site_name" content="lekoarts.de" />
-          <meta property="og:url" content="https://gatsby-starter-portfolio.netlify.com" />
-          <meta property="og:title" content="Gatsby Starter Portfolio Overview by LekoArts" />
-          <meta
-            property="og:description"
-            content="Gatsby.js starters by LekoArts. Primarily aimed at Designers & Photographers. Minimalistic & fast websites!"
-          />
-          <meta property="og:image" content={favicon} />
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:creator" content="@lekoarts.de" />
-          <meta name="twitter:title" content="Gatsby Starter Portfolio Overview by LekoArts" />
-          <meta
-            name="twitter:description"
-            content="Gatsby.js starters by LekoArts. Primarily aimed at Designers & Photographers. Minimalistic & fast websites!"
-          />
-          <meta name="twitter:image" content={favicon} />
-        </Helmet>
-        <Page>
-          <Header />
-          <SliderWrapper>
-            <Heading>Overview</Heading>
-            <Grid>
-              {edges.map(site => {
-                const { id, title, description, preview, features, cover, url } = site.node
-                return (
-                  <Item key={id}>
-                    <ItemContent>
-                      <Top>
-                        <Preview href={preview}>
-                          Preview <img src={rightArrow} alt="Arrow" aria-hidden="true" />
-                        </Preview>
-                        <Repo href={url}>
-                          <img src={github} alt="Arrow" aria-hidden="true" /> GitHub
-                        </Repo>
-                        <Desc>{description}</Desc>
-                      </Top>
-                      <Bottom>
-                        <ItemTitle>{title}</ItemTitle>
-                        <Divider />
-                        <FeaturesWrapper>{features.join(', ')}</FeaturesWrapper>
-                      </Bottom>
-                      <BGImage>
-                        <Gradient />
-                        <Img fluid={cover.childImageSharp.fluid} />
-                      </BGImage>
-                    </ItemContent>
-                  </Item>
-                )
-              })}
-            </Grid>
-          </SliderWrapper>
-          <Content>
-            <Heading>Getting started</Heading>
-            <Description>
-              <p>
-                Make sure that you have <a href="https://nodejs.org/en/">Node.js</a> and{' '}
-                <a href="https://github.com/nodejs/node-gyp#installation">node-gyp</a> installed on your system. In
-                order to use{' '}
-                <a href="https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b">npx</a>{' '}
-                you'll need to have an up-to-date npm version installed.
-              </p>
-            </Description>
-            <Description long={true}>
-              <h3>Choose one of the starters and install it!</h3>
-              <SelectWrapper>
-                <select onChange={e => this.selectChange(e)}>
-                  <option data-name="[DIRECTORY_NAME]" data-url="[GITHUB_REPO_URL]">
-                    ---
-                  </option>
-                  {edges.map(site => {
-                    const { id, url, name, title } = site.node
-                    return (
-                      <option key={id} data-name={name} data-url={url}>
-                        {title}
-                      </option>
-                    )
-                  })}
-                </select>
-                <pre>
-                  <code>
-                    <span>$ npx gatsby new</span> <i>{name}</i> {url}
-                  </code>
-                </pre>
-              </SelectWrapper>
-              <p>Go into the newly created directory:</p>
+  return (
+    <>
+      <Helmet>
+        <html lang="en" />
+        <title>{siteMetadata.siteTitle}</title>
+        <meta
+          name="description"
+          content="Gatsby.js Starters by LekoArts. Primarily aimed at Designers & Photographers. Minimalistic & fast websites!"
+        />
+        <meta name="image" content={favicon} />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:site_name" content="lekoarts.de" />
+        <meta property="og:url" content="https://gatsby-starter-portfolio.netlify.com" />
+        <meta property="og:title" content="Gatsby Starter Portfolio Overview by LekoArts" />
+        <meta
+          property="og:description"
+          content="Gatsby.js starters by LekoArts. Primarily aimed at Designers & Photographers. Minimalistic & fast websites!"
+        />
+        <meta property="og:image" content={favicon} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:creator" content="@lekoarts.de" />
+        <meta name="twitter:title" content="Gatsby Starter Portfolio Overview by LekoArts" />
+        <meta
+          name="twitter:description"
+          content="Gatsby.js starters by LekoArts. Primarily aimed at Designers & Photographers. Minimalistic & fast websites!"
+        />
+        <meta name="twitter:image" content={favicon} />
+      </Helmet>
+      <Page>
+        <Header />
+        <SliderWrapper>
+          <Heading>Overview</Heading>
+          <Grid>
+            {edges.map(site => {
+              const { id, title, description, preview, features, cover, url } = site.node
+              return (
+                <Item key={id}>
+                  <ItemContent>
+                    <Top>
+                      <Preview href={preview}>
+                        Preview <img src={rightArrow} alt="Arrow" aria-hidden="true" />
+                      </Preview>
+                      <Repo href={url}>
+                        <img src={github} alt="Arrow" aria-hidden="true" /> GitHub
+                      </Repo>
+                      <Desc>{description}</Desc>
+                    </Top>
+                    <Bottom>
+                      <ItemTitle>{title}</ItemTitle>
+                      <Divider />
+                      <FeaturesWrapper>{features.join(', ')}</FeaturesWrapper>
+                    </Bottom>
+                    <BGImage>
+                      <Gradient />
+                      <Img fluid={cover.childImageSharp.fluid} />
+                    </BGImage>
+                  </ItemContent>
+                </Item>
+              )
+            })}
+          </Grid>
+        </SliderWrapper>
+        <Content>
+          <Heading>Getting started</Heading>
+          <Description>
+            <p>
+              Make sure that you have <a href="https://nodejs.org/en/">Node.js</a> and{' '}
+              <a href="https://github.com/nodejs/node-gyp#installation">node-gyp</a> installed on your system. In order
+              to use <a href="https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b">npx</a>{' '}
+              you'll need to have an up-to-date npm version installed.
+            </p>
+          </Description>
+          <Description long={true}>
+            <h3>Choose one of the starters and install it!</h3>
+            <SelectWrapper>
+              <select onChange={e => selectChange(e)}>
+                <option data-name="[DIRECTORY_NAME]" data-url="[GITHUB_REPO_URL]">
+                  ---
+                </option>
+                {edges.map(site => {
+                  const { id, url, name, title } = site.node
+                  return (
+                    <option key={id} data-name={name} data-url={url}>
+                      {title}
+                    </option>
+                  )
+                })}
+              </select>
               <pre>
                 <code>
-                  <span>$ cd </span>
-                  <i>{name}</i>
+                  <span>$ npx gatsby new</span> <i>{name}</i> {url}
                 </code>
               </pre>
-              <p>Start the development server:</p>
-              <pre>
-                <code>
-                  <span>$ npm run develop</span>
-                </code>
-              </pre>
-            </Description>
-          </Content>
-          <Footer>
-            Design by <OutboundLink href="https://www.lekoarts.de">LekoArts</OutboundLink>.{' '}
-            <OutboundLink href="https://github.com/LeKoArts/gatsby-starter-portfolio">Source</OutboundLink>.
-          </Footer>
-        </Page>
-        <GlobalStyles />
-      </>
-    )
-  }
+            </SelectWrapper>
+            <p>Go into the newly created directory:</p>
+            <pre>
+              <code>
+                <span>$ cd </span>
+                <i>{name}</i>
+              </code>
+            </pre>
+            <p>Start the development server:</p>
+            <pre>
+              <code>
+                <span>$ npm run develop</span>
+              </code>
+            </pre>
+          </Description>
+        </Content>
+        <Footer>
+          Design by <OutboundLink href="https://www.lekoarts.de">LekoArts</OutboundLink>.{' '}
+          <OutboundLink href="https://github.com/LeKoArts/gatsby-starter-portfolio">Source</OutboundLink>.
+        </Footer>
+      </Page>
+      <GlobalStyles />
+    </>
+  )
 }
 
 export default Index
