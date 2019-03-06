@@ -189,11 +189,33 @@ const Grid = styled.div`
   grid-gap: 30px;
 `
 
-interface PageProps {
+type PageProps = {
   data: {
     allSitesYaml: {
       edges: {
-        node: any
+        node: {
+          id: string
+          title: string
+          url: string
+          name: string
+          description: string
+          preview: string
+          features: string[]
+          cover: {
+            childImageSharp: {
+              fluid: {
+                aspectRatio: number
+                src: string
+                srcSet: string
+                sizes: string
+                base64: string
+                tracedSVG: string
+                srcWebp: string
+                srcSetWebp: string
+              }
+            }
+          }
+        }
       }[]
     }
     site: {
@@ -208,7 +230,7 @@ interface PageProps {
 
 const Index: React.FunctionComponent<PageProps> = ({
   data: {
-    allSitesYaml: { edges },
+    allSitesYaml: { edges: sites },
     site: { siteMetadata },
   },
 }) => {
@@ -219,10 +241,16 @@ const Index: React.FunctionComponent<PageProps> = ({
     event.preventDefault()
 
     const element = event.target as HTMLSelectElement
+    const name = element.value
+    const url =
+      sites
+        .filter(p => p.node.name === name)
+        .map(x => x.node.url)
+        .toString() || '[GITHUB_REPO_URL]'
 
     setInfo({
-      name: element.selectedOptions[0].dataset.name,
-      url: element.selectedOptions[0].dataset.url,
+      name,
+      url,
     })
   }
 
@@ -250,7 +278,7 @@ const Index: React.FunctionComponent<PageProps> = ({
         <SliderWrapper>
           <Heading>Overview</Heading>
           <Grid>
-            {edges.map(site => {
+            {sites.map(site => {
               const { id, title, description, preview, features, cover, url } = site.node
               return (
                 <Item key={id}>
@@ -292,14 +320,12 @@ const Index: React.FunctionComponent<PageProps> = ({
           <Description long={true}>
             <h3>Choose one of the starters and install it!</h3>
             <SelectWrapper>
-              <select onChange={e => selectChange(e)}>
-                <option data-name="[DIRECTORY_NAME]" data-url="[GITHUB_REPO_URL]">
-                  ---
-                </option>
-                {edges.map(site => {
-                  const { id, url, name, title } = site.node
+              <select value={info.name} onChange={e => selectChange(e)}>
+                <option value="[DIRECTORY_NAME]">---</option>
+                {sites.map(site => {
+                  const { id, name, title } = site.node
                   return (
-                    <option key={id} data-name={name} data-url={url}>
+                    <option key={id} value={name}>
                       {title}
                     </option>
                   )

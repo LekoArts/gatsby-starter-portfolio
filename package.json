@@ -8,7 +8,7 @@
     "develop": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "lint": "tslint -t stylish -p .",
+    "lint": "tslint -t stylish -p tsconfig.json",
     "lint:fix": "tslint -p tsconfig.json -t stylish --fix 'src/**/*.ts'",
     "format": "prettier --write src/sites/sites.yaml"
   },
