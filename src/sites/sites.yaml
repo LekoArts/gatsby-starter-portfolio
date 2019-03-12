@@ -54,7 +54,7 @@
 - title: 'Jodie'
   url: 'https://github.com/LekoArts/gatsby-starter-portfolio-jodie'
   name: 'portfolio-jodie'
-  preview: 'https://jodie.netlify.com/'
+  preview: 'https://jodie.lekoarts.de'
   description: 'Image-heavy photography portfolio with colorful accents & great typography'
   cover: './jodie.jpg'
   features:
