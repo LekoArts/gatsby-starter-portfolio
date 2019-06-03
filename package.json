@@ -37,8 +37,8 @@
     "typescript": "^3.4.5"
   },
   "devDependencies": {
-    "@types/node": "^10.14.7",
-    "@types/react": "^16.8.18",
+    "@types/node": "^10.14.8",
+    "@types/react": "^16.8.19",
     "@types/react-dom": "^16.8.4",
     "@types/react-helmet": "^5.0.8",
     "@types/styled-components": "^4.1.15",
