@@ -34,7 +34,7 @@
     "tailwind.macro": "^0.5.10",
     "tailwindcss": "^0.7.4",
     "typeface-montserrat": "^0.0.75",
-    "typescript": "^3.5.3"
+    "typescript": "^3.6.2"
   },
   "devDependencies": {
     "@types/node": "^10.14.17",
